@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('LOCAL_DATABASE'),
-        'USER': os.getenv('LOCAL_USER'),
-        'PASSWORD': os.getenv('LOCAL_PASSWORD'),
-        'HOST': os.getenv('LOCAL_HOST'),
-        'PORT': os.getenv('LOCAL_PORT')
+        'NAME': os.getenv('PGDATABASE'),
+        'USER': os.getenv('PGUSER'),
+        'PASSWORD': os.getenv('PGPASSWORD'),
+        'HOST': os.getenv('PGHOST'),
+        'PORT': os.getenv('PGPORT')
     }
 }
 
