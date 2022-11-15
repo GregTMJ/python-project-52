@@ -15,6 +15,7 @@
 ## Required packages
 * Django  ^4.0
 * Python-dotenv  ^0.21
+* to avoid psycopg problems, install psycopg-binary ^3.1.4
 
 #### Check your pip version with the following command:
 ```python -m pip --version```
