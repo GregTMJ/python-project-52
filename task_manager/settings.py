@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('LOCAL_DATABASE'),
+        'USER': os.getenv('LOCAL_USER'),
+        'PASSWORD': os.getenv('LOCAL_PASSWORD'),
+        'HOST': os.getenv('LOCAL_HOST'),
+        'PORT': os.getenv('LOCAL_PORT')
     }
 }
 
