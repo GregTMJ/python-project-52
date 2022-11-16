@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% bootstrap_messages %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}{% endblock %}
+</head>
+<body>
+{% block sidebar %} {% endblock %}
+{% block content %} {% endblock %}
+</body>
+</html>
