@@ -1,20 +1,16 @@
+setup: prepare install prepare-db
+
+prepare:
+	cp -n .env.example .env
+
 install:
 	poetry install
-
-build:
-	poetry build
-
-publish:
-	poetry publish --dry-run
-
-package-install:
-	python -m pip install --force-reinstall dist/*.whl
 
 prepare-db:
 	poetry run python manage.py migrate
 
 serve:
-	poetry run python manage.py runserver 0.0.0.0:8000
+	poetry run python manage.py runserver 0.0.0.0:7000
 
 shell:
 	poetry run python manage.py shell

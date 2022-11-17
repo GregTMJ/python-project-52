@@ -14,8 +14,7 @@ BASE_DIR = BASE_DIR / 'task_manager'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY",
-                       'sbg70s(9_&3*q!u*j#mwb3f=v%0d4b+5j1+7=orj383*l03l2q')
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
