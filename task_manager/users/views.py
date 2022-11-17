@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout, \
     get_user_model
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, View, UpdateView, DeleteView

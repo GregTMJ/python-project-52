@@ -113,7 +113,8 @@ class TestGetRequests(TestCase):
                                     new_user_data, )
         self.assertEquals(response.status_code, 302)
         self.assertRedirects(response, self.list_users_url)
-        updated_user = get_user_model().objects.get(username=new_user_data.get("username"))
+        updated_user = get_user_model().objects.get(
+            username=new_user_data.get("username"))
         self.assertUser(updated_user, new_user_data)
 
     def test_delete_user(self):
