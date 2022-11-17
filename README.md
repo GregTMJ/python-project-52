@@ -1,5 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/GregTMJ/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/GregTMJ/python-project-52/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3421cbe192c76198073b/maintainability)](https://codeclimate.com/github/GregTMJ/python-project-52/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3421cbe192c76198073b/test_coverage)](https://codeclimate.com/github/GregTMJ/python-project-52/test_coverage)
 
 
 ## Getting Started
