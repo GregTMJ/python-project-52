@@ -74,14 +74,20 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+db_from_env = os.getenv('DATABASES')
+if db_from_env:
+    DATABASES['default'].update({
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('PGDATABASE'),
         'USER': os.getenv('PGUSER'),
         'PASSWORD': os.getenv('PGPASSWORD'),
         'HOST': os.getenv('PGHOST'),
         'PORT': os.getenv('PGPORT')
-    }
-}
+    })
 
 
 # Password validation
