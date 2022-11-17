@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Users' %}{% endblock %}
+
+{% block main %}
+<main>
+    <ul class="list-group">
+        {% if people %}
+        {% for person in people %}
+
+        <li class="list-group-item">
+
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto p-2 bd-highlight text-capitalize">{{ person.username }}</div>
+                {% if user.pk == person.pk %}
+                <div class="p-2 bd-highlight">
+                    <a class="btn btn-primary" href="{% url 'edit' person.pk %}" role="button">{% trans 'edit' %}</a>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <a class="btn btn-danger" href="{% url 'delete' person.pk %}" role="button">{% trans 'delete' %}</a>
+                </div>
+                {% endif %}
+            </div>
+
+        </li>
+
+        {% endfor %}
+        {% endif %}
+    </ul>
+</main>
+{% endblock %}

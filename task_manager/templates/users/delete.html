@@ -1,0 +1,18 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans 'Delete' %}{% endblock %}
+
+{% block main %}
+<h1>{% trans 'Delete user' %}</h1>
+<div class="d-flex justify-content-center">
+    <form method="POST">
+        {% csrf_token %}
+        <p>{% trans 'Are u sure you want to delete' %} {{ user.username }} ?</p>
+        <button type="submit" class="btn btn-danger">{% trans 'Confirm' %}</button>
+    </form>
+</div>
+
+{% endblock %}
