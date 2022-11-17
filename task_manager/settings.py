@@ -17,7 +17,7 @@ BASE_DIR = BASE_DIR / 'task_manager'
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = os.getenv('HOST').split(",")
 
@@ -49,11 +49,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
-
-CSRF_TRUSTED_ORIGINS = (
-    'http://127.0.0.1',
-    'http://localhost'
-)
 
 TEMPLATES = [
     {
