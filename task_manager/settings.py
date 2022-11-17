@@ -7,6 +7,7 @@ import os
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = BASE_DIR / 'task_manager'
 
 
 # Quick-start development settings - unsuitable for production
@@ -19,7 +20,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = os.getenv('HOST').split(",")
-print(ALLOWED_HOSTS)
 
 # Application definition
 
@@ -32,6 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Adding bootstrap package
     'bootstrap4',
+    'crispy_forms',
+    # Adding the app for users
+    'task_manager.users',
 ]
 
 MIDDLEWARE = [
@@ -47,10 +50,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'task_manager.urls'
 
+CSRF_TRUSTED_ORIGINS = (
+    'http://127.0.0.1',
+    'http://localhost'
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,8 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 LANGUAGES = [
+    ('ru', 'Russian'),
     ('en', 'English'),
-    ('ru', 'Russian')
 ]
 
 TIME_ZONE = 'UTC'
@@ -121,6 +129,8 @@ LOCALE_PATHS = (BASE_DIR / 'locale/', )
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
