@@ -28,7 +28,7 @@ lxml = ["lxml"]
 name = "coverage"
 version = "6.5.0"
 description = "Code coverage measurement for Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -76,7 +76,7 @@ python-versions = ">=3.7"
 name = "flake8"
 version = "5.0.4"
 description = "the modular source code checker: pep8 pyflakes and co"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6.1"
 
@@ -106,7 +106,7 @@ tornado = ["tornado (>=0.2)"]
 name = "mccabe"
 version = "0.7.0"
 description = "McCabe checker, plugin for flake8"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -122,7 +122,7 @@ python-versions = ">=3.6"
 name = "pycodestyle"
 version = "2.9.1"
 description = "Python style guide checker"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -130,7 +130,7 @@ python-versions = ">=3.6"
 name = "pyflakes"
 version = "2.5.0"
 description = "passive checker of Python programs"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -196,7 +196,7 @@ test = ["pytest (>=3.0.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "1e81991beb5259a336b11ceb70cff8e05c3bfad1d23aed934972a2d4724518a0"
+content-hash = "bb23fa03bad4380d2fe244a475f2f0e58580b1ab90998626a91f78cd4b2ad63a"
 
 [metadata.files]
 asgiref = [
