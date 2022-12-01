@@ -14,7 +14,7 @@
         <form method="POST">
         {% csrf_token %}
         <p>{% trans 'Are u sure you want to delete' %} {{ status.name }} ?</p>
-        <button type="submit" class="btn btn-danger">{% trans 'Confirm' %}</button>
+        <button type="submit" class="btn btn-danger">{% trans 'Yes, confirm' %}</button>
     </form>
     </div>
 </div>

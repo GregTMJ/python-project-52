@@ -62,7 +62,7 @@ msgstr "Удалить"
 
 #: .\templates\users\login.html:18
 msgid "Sign in"
-msgstr "Входить"
+msgstr "Войти"
 
 #: .\templates\users\edit.html:10
 msgid "Edit user"
@@ -85,8 +85,8 @@ msgid "Are u sure you want to delete"
 msgstr "Вы уверены что хотите удалить"
 
 #: .\templates\users\delete.html:14
-msgid "Confirm"
-msgstr "Подтвердить"
+msgid "Yes, confirm"
+msgstr "Да, удалить"
 
 #: task_manager\status\views.py:31
 msgid "Status successfully created!"
