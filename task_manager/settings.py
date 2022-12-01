@@ -1,14 +1,13 @@
+from django.urls import reverse_lazy
 from dotenv import load_dotenv
 from pathlib import Path
 
 import os
 
-
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = BASE_DIR / 'task_manager'
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -17,7 +16,7 @@ BASE_DIR = BASE_DIR / 'task_manager'
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = True if os.getenv("DEBUG") else False
 
 HOSTS = os.getenv('HOST', None)
 if HOSTS:
@@ -39,6 +38,15 @@ INSTALLED_APPS = [
     'crispy_forms',
     # Adding the app for users
     'task_manager.users',
+    # Adding the status app
+    'task_manager.status',
+    # Adding the tasks app
+    'task_manager.tasks',
+    # Adding labels app
+    'task_manager.labels',
+    # Adding the django-filter
+    'django_filters',
+
 ]
 
 MIDDLEWARE = [
@@ -50,9 +58,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
+
+ROLLBAR = {
+    'access_token': os.getenv("ROLLBAR_TOKEN"),
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+} if os.getenv("ROLLBAR_TOKEN") else None
 
 TEMPLATES = [
     {
@@ -71,7 +88,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'task_manager.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -92,7 +108,6 @@ if db_from_env:
         'HOST': os.getenv('PGHOST'),
         'PORT': os.getenv('PGPORT')
     })
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -116,6 +131,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGOUT_REDIRECT_URL = reverse_lazy('home')
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -132,12 +150,17 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOCALE_PATHS = (BASE_DIR / 'locale/', )
+LOCALE_PATHS = (BASE_DIR / 'locale/',)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

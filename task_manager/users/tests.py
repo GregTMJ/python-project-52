@@ -2,8 +2,10 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
+from task_manager.json_data import get_data
 
-class TestGetRequests(TestCase):
+
+class TestAuthRequests(TestCase):
 
     def setUp(self) -> None:
         """
@@ -14,11 +16,12 @@ class TestGetRequests(TestCase):
         self.list_users_url = reverse('users')
         self.login_url = reverse('login')
         self.register_url = reverse('register')
+        self.users_info = get_data("users")
         self.create_user = get_user_model().objects.create(
-            first_name='Gregory',
-            last_name='Saliba',
-            username='Greg',
-            password='Something_1'
+            first_name=self.users_info.get('new').get("first_name"),
+            last_name=self.users_info.get('new').get("last_name"),
+            username=self.users_info.get('new').get("username"),
+            password=self.users_info.get('new').get("password")
         )
         self.edit_user_url = reverse('edit',
                                      args=[self.create_user.id])
@@ -104,18 +107,14 @@ class TestGetRequests(TestCase):
         Testing update
         """
         self.login()
-        new_user_data = {
-            "first_name": "Gregz",
-            "last_name": "Saliba",
-            "username": "Gregtmj"
-        }
+        update_user_info = self.users_info.get('updated_user')
         response = self.client.post(self.edit_user_url,
-                                    new_user_data, )
+                                    update_user_info)
         self.assertEquals(response.status_code, 302)
         self.assertRedirects(response, self.list_users_url)
         updated_user = get_user_model().objects.get(
-            username=new_user_data.get("username"))
-        self.assertUser(updated_user, new_user_data)
+            username=update_user_info.get("username"))
+        self.assertUser(updated_user, update_user_info)
 
     def test_delete_user(self):
         """
