@@ -207,3 +207,6 @@ msgstr "Вы вышли из системы!"
 #: task_manager\users\views.py:96
 msgid "Show"
 msgstr "Показать"
+
+msgid "Enter"
+msgstr "Вход"
