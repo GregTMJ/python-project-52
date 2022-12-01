@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Status' %}{% endblock %}
+
+{% block main %}
+<main>
+    <div class="container">
+        <div class="p-2 bd-highlight">
+            <a class="btn btn-primary" href="{% url 'status_create' %}"
+               role="button">{% trans 'create status' %}</a>
+        </div>
+        <ul class="list-group">
+            {% if statuses %}
+            {% for status in statuses %}
+
+            <li class="list-group-item">
+
+                <div class="d-flex bd-highlight mb-3">
+                    <div class="mr-auto p-2 bd-highlight text-capitalize">{{ status.id }}</div>
+                    <div class="mr-auto p-2 bd-highlight text-capitalize">{{ status.name }}</div>
+                    <div class="mr-auto p-2 bd-highlight text-capitalize">{{ status.created_at }}</div>
+                    <div class="p-2 bd-highlight">
+                        <a class="btn btn-primary" href="{% url 'status_update' status.id %}"
+                           role="button">{% trans 'edit' %}</a>
+                        <a class="btn btn-danger" href="{% url 'status_delete' status.id %}"
+                           role="button">{% trans 'delete' %}</a>
+                    </div>
+                </div>
+
+            </li>
+
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+</main>
+{% endblock %}

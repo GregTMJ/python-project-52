@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans 'Delete' %}{% endblock %}
+
+{% block main %}
+<div class="d-flex justify-content-center">
+    <div class="form-data">
+        <h3>{% trans 'Delete status' %}</h3>
+        <br>
+        <br>
+        <form method="POST">
+        {% csrf_token %}
+        <p>{% trans 'Are u sure you want to delete' %} {{ status.name }} ?</p>
+        <button type="submit" class="btn btn-danger">{% trans 'Confirm' %}</button>
+    </form>
+    </div>
+</div>
+{% endblock %}
