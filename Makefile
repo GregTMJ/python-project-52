@@ -31,6 +31,4 @@ test:
 	poetry run python manage.py test
 
 test-coverage:
-	poetry run coverage run --source='task_manager' manage.py test
-	coverage report
-	coverage xml
+	poetry run coverage run --source='task_manager' manage.py test && poetry run coverage report xml
