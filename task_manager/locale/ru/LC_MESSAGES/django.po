@@ -40,6 +40,18 @@ msgstr "Выход"
 msgid "Users"
 msgstr "Пользователи"
 
+#: .\templates\home.html:33
+msgid "Status"
+msgstr "Статус"
+
+#: .\templates\home.html:36
+msgid "Tasks"
+msgstr "Задачи"
+
+#: .\templates\home.html:36
+msgid "Labels"
+msgstr "Метки"
+
 #: .\templates\users\main.html:15
 msgid "edit"
 msgstr "Изменить"
@@ -75,3 +87,123 @@ msgstr "Вы уверены что хотите удалить"
 #: .\templates\users\delete.html:14
 msgid "Confirm"
 msgstr "Подтвердить"
+
+#: task_manager\status\views.py:31
+msgid "Status successfully created!"
+msgstr "Статус успешно создан!"
+
+#: task_manager\status\views.py:43
+msgid "Status successfully updated!"
+msgstr "Статус успешно обновлен!"
+
+#: task_manager\status\views.py:55
+msgid "Status successfully deleted!"
+msgstr "Статус успешно удален!"
+
+#: .\status\models.py:7
+msgid "name"
+msgstr "наименование"
+
+#: .\tasks\models.py:11
+msgid "description"
+msgstr "Описание"
+
+#: .\tasks\models.py:16
+msgid "task executor"
+msgstr "исполнитель задачи"
+
+#: .\tasks\models.py:16
+msgid "task creator"
+msgstr "Создатель задачи"
+
+#: .\tasks\models.py:28
+msgid "task status"
+msgstr "статус задачи"
+
+#: .\tasks\views.py:34
+msgid "Task successfully created!"
+msgstr "Задача удачно создана!"
+
+#: .\tasks\views.py:50
+msgid "Task successfully updated!"
+msgstr "Задача удачно обновлена!"
+
+#: .\tasks\views.py:50
+msgid "Task successfully deleted!"
+msgstr "Задача удачно удалена!"
+
+#: .\templates\labels\main.html:12
+msgid "create label"
+msgstr "создать метку"
+
+#: .\templates\status\main.html:12
+msgid "create status"
+msgstr "создать статус"
+
+#: .\templates\tasks\main.html:12
+msgid "create task"
+msgstr "создать задачу"
+
+#: .\templates\tasks\main.html:19
+msgid "ID"
+msgstr "Идентификатор"
+
+#: .\templates\tasks\main.html:22
+msgid "Name"
+msgstr "Имя"
+
+#: task_manager\tasks\models.py:12
+msgid "executor"
+msgstr "исполнитель"
+
+#: task_manager\tasks\models.py:30
+msgid "status"
+msgstr "статус"
+
+#: task_manager\tasks\forms.py:18
+msgid "labels"
+msgstr "метки"
+
+#: task_manager\tasks\forms.py:18
+msgid "Create"
+msgstr "Создать"
+
+#: .\templates\tasks\edit.html:11
+msgid "Edit task"
+msgstr "Обновить задачу"
+
+#: .\templates\status\edit.html:11
+msgid "Edit status"
+msgstr "Обновить статус"
+
+#: .\templates\labels\edit.html:11
+msgid "Edit label"
+msgstr "Обновить метку"
+
+#: task_manager\users\views.py:59
+msgid "Registration successful"
+msgstr "Успешная регистрация"
+
+#: task_manager\users\views.py:62
+msgid "Unsuccessful registration. Invalid information."
+msgstr "Неудачная регистрация. неверная информация."
+
+#: task_manager\users\views.py:72
+msgid "User's information successfully updated"
+msgstr "Информация о пользователе успешно обновлена"
+
+#: task_manager\users\views.py:82
+msgid "User deleted!"
+msgstr "Пользователь удалён!"
+
+#: task_manager\users\views.py:91
+msgid "You are logged in!"
+msgstr "Вы вошли в систему!"
+
+#: task_manager\users\views.py:96
+msgid "You logged out!"
+msgstr "Вы вышли из системы!"
+
+#: task_manager\users\views.py:96
+msgid "Show"
+msgstr "Показать"
