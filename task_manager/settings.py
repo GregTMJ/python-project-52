@@ -153,7 +153,6 @@ LOCALE_PATHS = (BASE_DIR / 'locale/',)
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
