@@ -32,6 +32,5 @@ test:
 
 test-coverage:
 	poetry run coverage run --source='task_manager' manage.py test
-	poetry run coverage html
-	poetry run coverage report
-	poetry run coverage xml
+	coverage report
+	coverage xml
