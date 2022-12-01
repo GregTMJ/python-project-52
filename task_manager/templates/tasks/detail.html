@@ -1,0 +1,35 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Task' %}{% endblock %}
+
+{% block main %}
+<main>
+    <div class="d-flex justify-content-center">
+        <div class="align-self-center">
+            <h3>{{ task.name }}</h3>
+            <br>
+            <p class="text-justify lead">Description: {{ task.description }}</p>
+            <p class="text-center strong">status: {{ task.status.name }}</p>
+
+            <br>
+            <p class="text-left strong">executed by: {{ task.executor.username }}</p>
+
+            <p class="text-left strong">labels:
+                {% for lab in task.label.all %}
+                {{ lab.name }} -
+            </p>
+            {% endfor %}
+            <p class="text-left strong">created by: {{ task.author.username }}</p>
+
+            <div class="p-2 bd-highlight">
+                <a class="btn btn-primary" href="{% url 'update_task' task.id %}"
+                   role="button">{% trans 'edit' %}</a>
+                <a class="btn btn-danger" href="{% url 'delete_task' task.id %}"
+                   role="button">{% trans 'delete' %}</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
