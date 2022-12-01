@@ -1,0 +1,15 @@
+{
+  "new": {
+    "id": 50,
+    "first_name": "Gregory",
+    "last_name": "Saliba",
+    "username": "GregTMJ",
+    "password": "8u3^2Dxw",
+    "email": "Greg@hotmail.com"
+  },
+  "updated_user": {
+    "first_name": "Greg",
+    "last_name": "Alexandrov",
+    "username": "Gregztmj"
+  }
+}

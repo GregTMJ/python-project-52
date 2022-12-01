@@ -1,0 +1,16 @@
+{
+  "new": {
+    "name": "Request client response",
+    "description": "The user must get a proper response",
+    "executor": "Phtil13",
+    "author": "GregTMJ",
+    "status": "On going"
+  },
+  "second": {
+    "name": "Server response",
+    "description": "After getting the proper client response, configure server response",
+    "author": "Phtil13",
+    "executor": "GregTMJ",
+    "status": "Bug fixing"
+  }
+}

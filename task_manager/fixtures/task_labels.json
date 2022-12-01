@@ -1,0 +1,16 @@
+{
+  "task_labels": [
+    {
+      "id": 10,
+      "name": "Working on part 1"
+    },
+    {
+      "id": 20,
+      "name": "Starting part 2"
+    },
+    {
+      "id": 30,
+      "name": "debugging part 1"
+    }
+  ]
+}
