@@ -65,11 +65,11 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'task_manager.urls'
 
 ROLLBAR = {
-    'access_token': os.getenv("ROLLBAR_TOKEN"),
+    'access_token': "58a61f66187c4459b0e30ef5e8f083e6",
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
-} if os.getenv("ROLLBAR_TOKEN") else None
+}
 
 TEMPLATES = [
     {
