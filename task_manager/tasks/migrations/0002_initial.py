@@ -20,21 +20,38 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='task',
             name='author',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='author', to=settings.AUTH_USER_MODEL, verbose_name='author'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name='author',
+                to=settings.AUTH_USER_MODEL, verbose_name='author'),
         ),
         migrations.AddField(
             model_name='task',
             name='executor',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='executor', to=settings.AUTH_USER_MODEL, verbose_name='executor'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name='executor',
+                to=settings.AUTH_USER_MODEL, verbose_name='executor'),
         ),
         migrations.AddField(
             model_name='task',
             name='label',
-            field=models.ManyToManyField(blank=True, related_name='labels', through='tasks.TaskLabelRelation', to='labels.label', verbose_name='labels'),
+            field=models.ManyToManyField(
+                blank=True,
+                related_name='labels',
+                through='tasks.TaskLabelRelation',
+                to='labels.label', verbose_name='labels'),
         ),
         migrations.AddField(
             model_name='task',
             name='status',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='status', to='status.status', verbose_name='status'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name='status',
+                to='status.status', verbose_name='status'),
         ),
     ]

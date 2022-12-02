@@ -16,9 +16,18 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Task',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True, verbose_name='name')),
-                ('description', models.TextField(blank=True, verbose_name='description')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')),
+                ('name', models.CharField(
+                    max_length=255,
+                    unique=True,
+                    verbose_name='name')),
+                ('description', models.TextField(
+                    blank=True,
+                    verbose_name='description')),
             ],
             options={
                 'ordering': ['id'],
@@ -27,9 +36,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TaskLabelRelation',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('label', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='labels.label')),
-                ('task', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tasks.task')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')),
+                ('label', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='labels.label')),
+                ('task', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='tasks.task')),
             ],
         ),
     ]
