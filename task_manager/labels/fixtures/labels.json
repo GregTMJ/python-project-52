@@ -1,0 +1,16 @@
+[
+  {
+    "model": "labels.label",
+    "pk": 10,
+    "fields": {
+      "name": "Giving new features"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 11,
+    "fields": {
+      "name": "Fixing major bugs"
+    }
+  }
+]

@@ -1,12 +1,17 @@
-from django.contrib.auth.models import User
+from django import test
 from django.test import TestCase
 from django.urls import reverse
 
 from task_manager.json_data import get_data
 from task_manager.status.models import Status
+from task_manager.users.models import User
 
 
+@test.modify_settings(MIDDLEWARE={'remove': [
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+]})
 class TestStatusRequest(TestCase):
+    fixtures = ['status.json']
 
     def setUp(self) -> None:
         """
@@ -48,19 +53,18 @@ class TestStatusRequest(TestCase):
         self.assertEqual(created_status.name, new_status['name'])
 
     def test_update_status(self):
-        self.client.post(self.create_status, self.status_info.get("new"))
-
-        created_status = Status.objects.get(
-            name=self.status_info.get("new")['name'])
+        existing_status = Status.objects.get(
+            name=self.status_info.get('existing')['name']
+        )
         response = self.client.get(reverse('status_update',
-                                           args=[created_status.pk]))
+                                           args=[existing_status.pk]))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'status/edit.html')
 
-        updated_status = self.status_info.get("updated_status")
+        updated_status = self.status_info.get("new")
         post_response = self.client.post(
             reverse('status_update',
-                    args=[created_status.pk]),
+                    args=[existing_status.pk]),
             updated_status)
         self.assertEquals(post_response.status_code, 302)
 
@@ -68,10 +72,8 @@ class TestStatusRequest(TestCase):
         self.assertEquals(updated_status['name'], status.name)
 
     def test_delete_status(self):
-        self.client.post(self.create_status, self.status_info.get("new"))
-
         created_status = Status.objects.get(
-            name=self.status_info.get("new")['name'])
+            name=self.status_info.get("existing")['name'])
         response = self.client.get(reverse('status_delete',
                                            args=[created_status.pk]))
         self.assertEquals(response.status_code, 200)

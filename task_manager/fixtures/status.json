@@ -1,9 +1,9 @@
 {
-  "new": {
-    "id": 10,
+  "existing": {
+    "pk": 15,
     "name": "On going"
   },
-  "updated_status": {
-    "name": "Bug fixing"
+  "new": {
+    "name": "Done"
   }
 }

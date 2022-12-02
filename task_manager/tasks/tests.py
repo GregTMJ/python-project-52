@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django import test
 from django.test import TestCase
 from django.urls import reverse
 
@@ -6,8 +6,12 @@ from task_manager.json_data import get_data
 from task_manager.tasks.models import Task, TaskLabelRelation
 from task_manager.labels.models import Label
 from task_manager.status.models import Status
+from task_manager.users.models import User
 
 
+@test.modify_settings(MIDDLEWARE={'remove': [
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+]})
 class TaskTest(TestCase):
 
     def setUp(self) -> None:
@@ -25,7 +29,7 @@ class TaskTest(TestCase):
             name=self.status_data.get('new')['name']
         )
         self.new_status = Status.objects.create(
-            name=self.status_data.get('updated_status')['name']
+            name=self.status_data.get('existing')['name']
         )
 
         for label in self.task_labels:

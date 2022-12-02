@@ -1,12 +1,17 @@
-from django.contrib.auth.models import User
+from django import test
 from django.test import TestCase
 from django.urls import reverse
 
 from task_manager.json_data import get_data
 from task_manager.labels.models import Label
+from task_manager.users.models import User
 
 
+@test.modify_settings(MIDDLEWARE={'remove': [
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+]})
 class TestLabelCase(TestCase):
+    fixtures = ['labels.json']
 
     def setUp(self) -> None:
         """
@@ -53,20 +58,19 @@ class TestLabelCase(TestCase):
         """
         Testing the GET/POST method for update view
         """
-        new_label = self.labels.get("new")
-        self.client.post(self.create_label,
-                         new_label)
-
+        new_label = self.labels.get("existing")
         label = Label.objects.get(name=new_label['name'])
         response = self.client.get(reverse('update_label',
                                            args=[label.id]))
+
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'labels/edit.html')
 
-        edit_label = self.labels.get("updated_label")
+        edit_label = self.labels.get("new")
         post_response = self.client.post(reverse('update_label',
                                                  args=[label.id]),
                                          edit_label)
+
         self.assertEquals(post_response.status_code, 302)
         self.assertRedirects(post_response, self.label_list)
 
@@ -77,17 +81,16 @@ class TestLabelCase(TestCase):
         """
         Testing the GET/POST method for delete view
         """
-        new_label = self.labels.get("new")
-        self.client.post(self.create_label,
-                         new_label)
-
+        new_label = self.labels.get("existing")
         label = Label.objects.get(name=new_label['name'])
         response = self.client.get(reverse('delete_label',
                                            args=[label.id]))
+
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'labels/delete.html')
 
         delete_response = self.client.post(reverse('delete_label',
                                                    args=[label.id]))
+
         self.assertEquals(delete_response.status_code, 302)
         self.assertRedirects(delete_response, self.label_list)

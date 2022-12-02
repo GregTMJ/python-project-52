@@ -7,27 +7,46 @@
 {% block main %}
 <main>
     <div class="d-flex justify-content-center">
-        <div class="align-self-center">
-            <h3>{{ task.name }}</h3>
-            <br>
-            <p class="text-justify lead">Description: {{ task.description }}</p>
-            <p class="text-center strong">status: {{ task.status.name }}</p>
-
-            <br>
-            <p class="text-left strong">executed by: {{ task.executor.username }}</p>
-
-            <p class="text-left strong">labels:
-                {% for lab in task.label.all %}
-                {{ lab.name }} -
-            </p>
-            {% endfor %}
-            <p class="text-left strong">created by: {{ task.author.username }}</p>
-
-            <div class="p-2 bd-highlight">
-                <a class="btn btn-primary" href="{% url 'update_task' task.id %}"
-                   role="button">{% trans 'edit' %}</a>
-                <a class="btn btn-danger" href="{% url 'delete_task' task.id %}"
-                   role="button">{% trans 'delete' %}</a>
+        <div class="row">
+            <div class="col align-self-center">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h3>{{ task.name }}</h3>
+                    </li>
+                    <li class="list-group-item">
+                        <p>{{ task.description }}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <p>{{ task.status.name }}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <p>
+                            <em>{% trans 'Executed by' %}: {{ task.executor.username }}</em>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        {% trans 'Labels' %}:
+                        <ul class="list-group list-group-flush">
+                            {% for lab in task.label.all %}
+                            <li class="list-group-item">
+                                {{ lab.name }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        {% trans 'Created by' %}:
+                        <p><em>{{ task.author.username }}</em></p>
+                    </li>
+                </ul>
+                <div class="p-2 bd-highlight">
+                    <a class="btn btn-primary" href="{% url 'update_task' task.id %}"
+                       role="button">{% trans 'edit' %}</a>
+                    {% if task.author.id == user.id %}
+                    <a class="btn btn-danger" href="{% url 'delete_task' task.id %}"
+                       role="button">{% trans 'delete' %}</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

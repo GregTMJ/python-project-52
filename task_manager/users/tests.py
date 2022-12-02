@@ -1,3 +1,4 @@
+from django import test
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
@@ -5,7 +6,11 @@ from django.urls import reverse
 from task_manager.json_data import get_data
 
 
+@test.modify_settings(MIDDLEWARE={'remove': [
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+]})
 class TestAuthRequests(TestCase):
+    fixtures = ['users.json']
 
     def setUp(self) -> None:
         """

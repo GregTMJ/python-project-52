@@ -210,3 +210,9 @@ msgstr "Показать"
 
 msgid "Enter"
 msgstr "Вход"
+
+msgid "Executed by"
+msgstr "Выполняет"
+
+msgid "Created by"
+msgstr "Создатель"

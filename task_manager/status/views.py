@@ -1,5 +1,5 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, UpdateView, \
@@ -18,8 +18,7 @@ class StatusListView(LoginRequiredMixin, ListView):
     context_object_name = 'statuses'
 
 
-class StatusCreateView(LoginRequiredMixin, CreateView,
-                       SuccessMessageMixin):
+class StatusCreateView(LoginRequiredMixin, CreateView):
     """
     View to create new status
     """
@@ -29,9 +28,13 @@ class StatusCreateView(LoginRequiredMixin, CreateView,
     success_message = _('Status successfully created!')
     success_url = reverse_lazy('statuses')
 
+    def form_valid(self, form):
+        messages.success(request=self.request,
+                         message=self.success_message)
+        return super(StatusCreateView, self).form_valid(form)
 
-class StatusUpdateView(LoginRequiredMixin, UpdateView,
-                       SuccessMessageMixin):
+
+class StatusUpdateView(LoginRequiredMixin, UpdateView):
     """
     View to update a status
     """
@@ -41,9 +44,13 @@ class StatusUpdateView(LoginRequiredMixin, UpdateView,
     success_message = _('Status successfully updated!')
     success_url = reverse_lazy('statuses')
 
+    def form_valid(self, form):
+        messages.success(request=self.request,
+                         message=self.success_message)
+        return super(StatusUpdateView, self).form_valid(form)
 
-class StatusDeleteView(LoginRequiredMixin, DeleteView,
-                       SuccessMessageMixin):
+
+class StatusDeleteView(LoginRequiredMixin, DeleteView):
     """
     View to delete a status
     """
@@ -51,3 +58,8 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView,
     template_name = 'status/delete.html'
     success_url = reverse_lazy('statuses')
     success_message = _('Status successfully deleted!')
+
+    def form_valid(self, form):
+        messages.success(request=self.request,
+                         message=self.success_message)
+        return super(StatusDeleteView, self).form_valid(form)

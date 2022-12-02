@@ -1,5 +1,5 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, CreateView, \
@@ -17,7 +17,7 @@ class LabelListView(ListView, LoginRequiredMixin):
     context_object_name = 'labels'
 
 
-class LabelCreateView(CreateView, SuccessMessageMixin,
+class LabelCreateView(CreateView,
                       LoginRequiredMixin):
     """
     View to create new labels
@@ -25,11 +25,17 @@ class LabelCreateView(CreateView, SuccessMessageMixin,
     model = Label
     fields = ('name', )
     template_name = 'labels/create.html'
-    success_message = _('Label successfully created!')
-    success_url = reverse_lazy('labels')
+
+    def form_valid(self, form):
+        messages.success(request=self.request,
+                         message=_('Label successfully created!'))
+        return super(LabelCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('labels')
 
 
-class LabelUpdateView(UpdateView, SuccessMessageMixin,
+class LabelUpdateView(UpdateView,
                       LoginRequiredMixin):
     """
     View to update a label
@@ -37,16 +43,27 @@ class LabelUpdateView(UpdateView, SuccessMessageMixin,
     model = Label
     fields = ('name', )
     template_name = 'labels/edit.html'
-    success_message = _('Label successfully updated!')
     success_url = reverse_lazy('labels')
 
+    def form_valid(self, form):
+        messages.success(request=self.request,
+                         message=_('Label successfully updated!'))
+        return super(LabelUpdateView, self).form_valid(form)
 
-class LabelDeleteView(DeleteView, SuccessMessageMixin,
+    def get_success_url(self):
+        return self.success_url
+
+
+class LabelDeleteView(DeleteView,
                       LoginRequiredMixin):
     """
     View to delete a label
     """
     model = Label
     template_name = 'labels/delete.html'
-    success_message = _('Label successfully deleted!')
     success_url = reverse_lazy('labels')
+
+    def form_valid(self, form):
+        messages.success(request=self.request,
+                         message=_('Label successfully deleted!'))
+        return super(LabelDeleteView, self).form_valid(form)

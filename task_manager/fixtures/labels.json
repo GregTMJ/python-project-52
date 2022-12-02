@@ -1,8 +1,8 @@
 {
-  "new": {
-    "name": "bugs everywhere"
+  "existing": {
+    "name": "Giving new features"
   },
-  "updated_label": {
+  "new": {
     "name": "Working on it"
   }
 }
