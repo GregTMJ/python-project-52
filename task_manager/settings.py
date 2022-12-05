@@ -2,6 +2,7 @@ from django.urls import reverse_lazy
 from dotenv import load_dotenv
 from pathlib import Path
 
+import dj_database_url
 import os
 
 load_dotenv()
@@ -98,16 +99,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-db_from_env = os.getenv('DATABASES')
-if db_from_env:
-    DATABASES['default'].update({
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('PGDATABASE'),
-        'USER': os.getenv('PGUSER'),
-        'PASSWORD': os.getenv('PGPASSWORD'),
-        'HOST': os.getenv('PGHOST'),
-        'PORT': os.getenv('PGPORT')
-    })
+db_env = os.getenv('DATABASES')
+if db_env:
+    db_from_env = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

@@ -198,7 +198,7 @@ msgstr "Пользователь удалён!"
 
 #: task_manager\users\views.py:91
 msgid "You are logged in!"
-msgstr "Вы вошли в систему!"
+msgstr "Вы залогинены"
 
 #: task_manager\users\views.py:96
 msgid "You logged out!"
