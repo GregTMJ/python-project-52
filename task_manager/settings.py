@@ -157,3 +157,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF = os.getenv('HTTPS', None)
+if CSRF:
+    CSRF_TRUSTED_ORIGINS = ['https://python-project-52-task-manager-ada2.up.railway.app']
