@@ -77,6 +77,11 @@ class LoginUserView(SuccessMessageMixin, LoginView):
     template_name = 'users/login.html'
     success_message = _('You are logged in!')
 
+    def form_invalid(self, form):
+        messages.error(request=self.request,
+                       message=_('Invalid information'))
+        return super(LoginUserView, self).form_invalid(form)
+
 
 class LogoutUserView(LogoutView):
     def dispatch(self, request, *args, **kwargs):

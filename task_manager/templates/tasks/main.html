@@ -1,4 +1,4 @@
-{% extends "home.html" %}
+{% extends "basic.html" %}
 
 {% load i18n %}
 {% load bootstrap4 %}
@@ -13,16 +13,19 @@
                role="button">{% trans 'create task' %}</a>
         </div>
         <div class="row justify-content-md-center">
-            <form method="get">
-                <div class="form-group">
-                    <div class="col-sm-10">
-                        {{ filter.form.as_p }}
+
+                <form method="get">
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            {{ filter.form.as_p }}
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary">{% trans 'Show' %}</button>
-                <br>
-                <br>
-            </form>
+                    <button type="submit" class="btn btn-primary">{% trans 'Show' %}</button>
+                    <br>
+                    <br>
+                </form>
+
+
 
             <table class="table table-striped">
                 <thead>

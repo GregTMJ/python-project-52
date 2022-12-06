@@ -42,4 +42,3 @@ def get_data(category) -> dict | None:
     look_file = FILES.get(category, None)
     if look_file:
         return read_json(look_file)
-    return None

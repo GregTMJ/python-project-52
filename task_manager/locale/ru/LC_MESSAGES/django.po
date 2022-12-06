@@ -20,37 +20,49 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\templates\home.html:10
+#: .\templates\basic.html:18
 msgid "Homepage"
 msgstr "Домашняя страница"
 
-#: .\templates\home.html:19
+#: .\templates\basic.html:27
 msgid "Login"
 msgstr "Вход"
 
-#: .\templates\home.html:22
+#: .\templates\basic.html:30
 msgid "Register"
 msgstr "Регистрация"
 
-#: .\templates\home.html:26
+#: .\templates\basic.html:34
 msgid "Logout"
 msgstr "Выход"
 
-#: .\templates\home.html:30
+#: .\templates\basic.html:37
 msgid "Users"
 msgstr "Пользователи"
 
-#: .\templates\home.html:33
+#: .\templates\basic.html:40
 msgid "Status"
 msgstr "Статус"
 
-#: .\templates\home.html:36
+#: .\templates\basic.html:43
 msgid "Tasks"
 msgstr "Задачи"
 
-#: .\templates\home.html:36
+#: .\templates\basic.html:47
 msgid "Labels"
 msgstr "Метки"
+
+#: .\templates\home.html:12
+msgid "Welcome to my Take on Task Manager"
+msgstr "Добро пожаловать в мой менеджер задач"
+
+#: .\templates\home.html:15
+msgid "If you have some feedbacks on my take, please contact me on my email address"
+msgstr "Если у вас есть какие-либо отзывы о моей работе, пожалуйста, свяжитесь со мной по электронной почте."
+
+#: .\templates\home.html:20-21
+msgid "Just remember, that every programmer sometimes needs a lovely or a bad feedback"
+msgstr "Просто помните, что каждому программисту иногда нужен хороший или плохой отзыв"
 
 #: .\templates\users\main.html:15
 msgid "edit"
@@ -184,23 +196,27 @@ msgstr "Обновить метку"
 msgid "Registration successful"
 msgstr "Успешная регистрация"
 
-#: task_manager\users\views.py:62
+#: task_manager\users\views.py:48
 msgid "Unsuccessful registration. Invalid information."
 msgstr "Неудачная регистрация. неверная информация."
 
-#: task_manager\users\views.py:72
+#: task_manager\users\views.py:59
 msgid "User's information successfully updated"
 msgstr "Информация о пользователе успешно обновлена"
 
-#: task_manager\users\views.py:82
+#: task_manager\users\views.py:69
 msgid "User deleted!"
 msgstr "Пользователь удалён!"
 
-#: task_manager\users\views.py:91
+#: task_manager\users\views.py:78
 msgid "You are logged in!"
 msgstr "Вы залогинены"
 
-#: task_manager\users\views.py:96
+#: task_manager\users\views.py:82
+msgid "Invalid information"
+msgstr "Неверная информация"
+
+#: task_manager\users\views.py:87
 msgid "You logged out!"
 msgstr "Вы вышли из системы!"
 

@@ -4,49 +4,26 @@
 
 {% block title %}{% trans 'Homepage' %}{% endblock %}
 
-{% block header %}
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">{% trans 'Homepage' %}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    {% if not user.is_authenticated %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'login' %}">{% trans 'Login' %}</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'register' %}">{% trans 'Register' %}</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'statuses' %}">{% trans 'Status' %}</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'tasks' %}">{% trans 'Tasks' %}</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'labels' %}">{% trans 'Labels' %}</a>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users' %}">{% trans 'Users' %}</a>
-                    </li>
-                </ul>
+{% block main %}
+
+<div class="container">
+    <div class="d-flex justify-content-center bg-light">
+        <div class="d-flex flex-column">
+            <h1 class="p-2">{% trans 'Welcome to my Take on Task Manager' %}</h1>
+            <br>
+            <br>
+            <p class="p-2">{% trans 'If you have some feedbacks on my take, please contact me on my email address' %}
+                <mark>
+                    Gregtmj@gmail.com
+                </mark>
+            </p>
+            <p class="p-2">
+                <strong>{% trans 'Just remember, that every programmer sometimes needs a lovely or a bad feedback' %}
+                </strong>
+            </p>
         </div>
-    </nav>
-    {% if messages %}
-    {% for message in messages %}
-    <div class="text-center alert alert-{{ message.tags }}">
-        {{ message|safe }}
+
     </div>
-    {% endfor %}
-    {% endif %}
-</header>
+</div>
+
 {% endblock %}
