@@ -20,8 +20,8 @@ django-filter = "^22.1"
 rollbar = "^0.16.3"
 whitenoise = "^6.2.0"
 dj-database-url = "^0.5.0"
-flake8 = "^6.0.0"
 coverage = "^6.5.0"
+flake8 = "4.0.1"
 
 
 [build-system]
