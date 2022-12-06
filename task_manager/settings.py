@@ -160,4 +160,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF = os.getenv('HTTPS', None)
 if CSRF:
-    CSRF_TRUSTED_ORIGINS = ['https://python-project-52-task-manager-ada2.up.railway.app']
+    CSRF_TRUSTED_ORIGINS = ['https://python-project-52-task-manager'
+                            '-ada2.up.railway.app']
