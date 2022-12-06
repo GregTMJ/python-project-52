@@ -180,7 +180,7 @@ msgstr "Обновить статус"
 msgid "Edit label"
 msgstr "Обновить метку"
 
-#: task_manager\users\views.py:59
+#: task_manager\users\views.py:39
 msgid "Registration successful"
 msgstr "Успешная регистрация"
 

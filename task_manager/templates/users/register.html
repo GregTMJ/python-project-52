@@ -10,19 +10,19 @@
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">
-            {{ register_form.first_name|as_crispy_field }}
+            {{ form.first_name|as_crispy_field }}
         </div>
         <div class="form-group">
-            {{ register_form.last_name|as_crispy_field }}
+            {{ form.last_name|as_crispy_field }}
         </div>
         <div class="form-group">
-            {{ register_form.username|as_crispy_field }}
+            {{ form.username|as_crispy_field }}
         </div>
         <div class="form-group">
-            {{ register_form.password1|as_crispy_field }}
+            {{ form.password1|as_crispy_field }}
         </div>
         <div class="form-group">
-            {{ register_form.password2|as_crispy_field }}
+            {{ form.password2|as_crispy_field }}
         </div>
         <button type="submit" class="btn btn-primary">{% trans 'Enter' %}</button>
 

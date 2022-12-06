@@ -1,13 +1,13 @@
 from django.contrib import messages
-from django.contrib.auth import login, get_user_model
+from django.contrib.auth import login, get_user_model, authenticate
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import ListView, View, UpdateView, DeleteView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 from task_manager.users.forms import NewUserForm
+from task_manager.users.models import User
 
 
 class UserListView(ListView):
@@ -27,37 +27,26 @@ class UserListView(ListView):
         return context
 
 
-class CreateUserView(View):
+class CreateUserView(CreateView, SuccessMessageMixin):
     """
     A view that gives us an option of getting the form to create
     a new user.
     """
-    def get(self, request, *args, **kwargs):
-        """
-        Gets the form in html template
-        :return: template with the form
-        """
-        form = NewUserForm()
-        return render(request=request,
-                      template_name='users/register.html',
-                      context={'register_form': form})
+    model = User
+    form_class = NewUserForm
+    template_name = 'users/register.html'
+    success_url = reverse_lazy('users')
+    success_message = _("Registration successful.")
 
-    def post(self, request, *args, **kwargs):
-        """
-        Validates the form, if valid adds the user in database
-        if not returns an error message
-        :return: a redirect to users with a successful message
-        of stays on the same page with an error message
-        """
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request,
-                             _("Registration successful."))
-            return redirect("/users")
-        messages.error(request,
-                       _("Unsuccessful registration. Invalid information."))
+    def form_valid(self, form):
+        messages.success(request=self.request,
+                         message=self.success_message)
+        return super(CreateUserView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(request=self.request,
+                       message=_("Unsuccessful registration. Invalid information."))
+        return super(CreateUserView, self).form_invalid(form)
 
 
 class UserUpdateView(UpdateView, SuccessMessageMixin):
