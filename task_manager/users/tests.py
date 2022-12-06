@@ -89,6 +89,16 @@ class TestAuthRequests(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/register.html')
 
+    def test_register_user(self):
+        """
+        Testing register new user
+        """
+        response = self.client.post(self.register_url,
+                                    self.users_info.get("tester"))
+
+        self.assertEquals(response.status_code, 302)
+        self.assertRedirects(response, self.list_users_url)
+
     def test_edit_user_GET(self):
         """
         Testing the edit user page GET request

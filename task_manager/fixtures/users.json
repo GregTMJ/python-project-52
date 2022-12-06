@@ -11,5 +11,12 @@
     "first_name": "Greg",
     "last_name": "Alexandrov",
     "username": "Gregztmj"
+  },
+  "tester": {
+    "first_name": "Grisha",
+    "last_name": "Saliba",
+    "username": "Salgreg",
+    "password1": "8u3^2Dxw",
+    "password2": "8u3^2Dxw"
   }
 }
