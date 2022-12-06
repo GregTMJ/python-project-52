@@ -80,6 +80,16 @@ class TestAuthRequests(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/login.html')
 
+        response = self.client.post(
+            self.login_url,
+            data={
+                'username': self.create_user.username,
+                'password': self.create_user.password
+            })
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'users/login.html')
+
     def test_register_GET(self):
         """
         Testing the register page GET request
@@ -98,6 +108,11 @@ class TestAuthRequests(TestCase):
 
         self.assertEquals(response.status_code, 302)
         self.assertRedirects(response, self.list_users_url)
+
+        response = self.client.post(self.register_url,
+                                    self.users_info.get("new"))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'users/register.html')
 
     def test_edit_user_GET(self):
         """
@@ -139,3 +154,13 @@ class TestAuthRequests(TestCase):
         response = self.client.post(self.delete_user_url)
         self.assertRedirects(response, self.homepage_url)
         self.assertEqual(response.status_code, 302)
+
+    def test_logout(self):
+        """
+        Testing the logout
+        """
+        self.login()
+        response = self.client.post(reverse('logout'))
+
+        self.assertEquals(response.status_code, 302)
+        self.assertRedirects(response, reverse('home'))
