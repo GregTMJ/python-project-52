@@ -23,7 +23,7 @@ HOSTS = os.getenv('HOST', None)
 if HOSTS:
     ALLOWED_HOSTS = os.getenv('HOST').split(",")
 else:
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['localhost', 'webserver']
 
 # Application definition
 
