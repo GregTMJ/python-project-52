@@ -32,7 +32,7 @@ class TestStatusRequest(TestCase):
         self.client.logout()
         response = self.client.get(self.list_statuses)
         self.assertEquals(response.status_code, 302)
-        self.assertRedirects(response, '/login?next=/statuses/')
+        self.assertRedirects(response, '/login/?next=/statuses/')
 
     def test_logged_in_user(self):
         response = self.client.get(self.list_statuses)
