@@ -217,8 +217,8 @@ msgid "Invalid information"
 msgstr "Неверная информация"
 
 #: task_manager\users\views.py:87
-msgid "You logged out!"
-msgstr "Вы вышли из системы!"
+msgid "You logged ouе"
+msgstr "Вы разлогинены"
 
 #: task_manager\users\views.py:96
 msgid "Show"

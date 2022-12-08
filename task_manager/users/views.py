@@ -80,5 +80,5 @@ class LoginUserView(SuccessMessageMixin, LoginView):
 
 class LogoutUserView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
-        messages.info(request, _('You logged out!'))
+        messages.info(request, _('You logged out'))
         return super().dispatch(request, *args, **kwargs)
