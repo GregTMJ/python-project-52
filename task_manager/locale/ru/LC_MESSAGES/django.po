@@ -42,7 +42,7 @@ msgstr "Пользователи"
 
 #: .\templates\basic.html:40
 msgid "Status"
-msgstr "Статус"
+msgstr "Статусы"
 
 #: .\templates\basic.html:43
 msgid "Tasks"
@@ -102,15 +102,15 @@ msgstr "Да, удалить"
 
 #: task_manager\status\views.py:31
 msgid "Status successfully created!"
-msgstr "Статус успешно создан!"
+msgstr "Статус успешно создан"
 
 #: task_manager\status\views.py:43
 msgid "Status successfully updated!"
-msgstr "Статус успешно обновлен!"
+msgstr "Статус успешно изменён"
 
 #: task_manager\status\views.py:55
 msgid "Status successfully deleted!"
-msgstr "Статус успешно удален!"
+msgstr "Статус успешно удалён"
 
 #: .\status\models.py:7
 msgid "name"
@@ -130,31 +130,31 @@ msgstr "Создатель задачи"
 
 #: .\tasks\models.py:28
 msgid "task status"
-msgstr "статус задачи"
+msgstr "Статус задачи"
 
 #: .\tasks\views.py:34
 msgid "Task successfully created!"
-msgstr "Задача удачно создана!"
+msgstr "Задача удачно создана"
 
 #: .\tasks\views.py:50
 msgid "Task successfully updated!"
-msgstr "Задача удачно обновлена!"
+msgstr "Задача удачно изменена"
 
 #: .\tasks\views.py:50
 msgid "Task successfully deleted!"
-msgstr "Задача удачно удалена!"
+msgstr "Задача удачно удалена"
 
 #: .\templates\labels\main.html:12
 msgid "create label"
-msgstr "создать метку"
+msgstr "Создать метку"
 
 #: .\templates\status\main.html:12
 msgid "create status"
-msgstr "создать статус"
+msgstr "Создать статус"
 
 #: .\templates\tasks\main.html:12
 msgid "create task"
-msgstr "создать задачу"
+msgstr "Создать задачу"
 
 #: .\templates\tasks\main.html:19
 msgid "ID"
@@ -194,7 +194,7 @@ msgstr "Обновить метку"
 
 #: task_manager\users\views.py:39
 msgid "Registration successful"
-msgstr "Успешная регистрация"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager\users\views.py:48
 msgid "Unsuccessful registration. Invalid information."
@@ -202,11 +202,11 @@ msgstr "Неудачная регистрация. неверная информ
 
 #: task_manager\users\views.py:59
 msgid "User's information successfully updated"
-msgstr "Информация о пользователе успешно обновлена"
+msgstr "Пользователь успешно изменён"
 
 #: task_manager\users\views.py:69
 msgid "User deleted!"
-msgstr "Пользователь удалён!"
+msgstr "Пользователь успешно удалён"
 
 #: task_manager\users\views.py:78
 msgid "You are logged in!"
