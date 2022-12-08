@@ -224,8 +224,8 @@ msgstr "Вы разлогинены"
 msgid "Show"
 msgstr "Показать"
 
-msgid "Enter"
-msgstr "Вход"
+msgid "Registrate"
+msgstr "Зарегистрировать"
 
 msgid "Executed by"
 msgstr "Выполняет"
