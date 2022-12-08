@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from task_manager.json_data import get_data
+from task_manager.users.models import User
 
 
 @test.modify_settings(MIDDLEWARE={'remove': [
@@ -21,13 +22,13 @@ class TestAuthRequests(TestCase):
         self.list_users_url = reverse('users')
         self.login_url = reverse('login')
         self.register_url = reverse('register')
+
+        self.user_info: dict = get_data('users').get('new')
         self.users_info = get_data("users")
-        self.create_user = get_user_model().objects.create(
-            first_name=self.users_info.get('new').get("first_name"),
-            last_name=self.users_info.get('new').get("last_name"),
-            username=self.users_info.get('new').get("username"),
-            password=self.users_info.get('new').get("password")
-        )
+
+        self.create_user = User.objects.create_user(**self.users_info.get('new'))
+        self.create_user.save()
+
         self.edit_user_url = reverse('edit',
                                      args=[self.create_user.id])
         self.delete_user_url = reverse('delete',
@@ -40,8 +41,8 @@ class TestAuthRequests(TestCase):
         because of the csrf token
         """
         self.client.login(
-            username=self.create_user.username,
-            password=self.create_user.password
+            username=self.user_info.get('username'),
+            password=self.user_info.get('password')
         )
 
     def assertUser(self, user, user_data):
@@ -80,15 +81,24 @@ class TestAuthRequests(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/login.html')
 
-        response = self.client.post(
-            self.login_url,
-            data={
-                'username': self.create_user.username,
-                'password': self.create_user.password
-            })
+        exist_user = {
+            'id': self.user_info.get('id'),
+            'username': self.user_info.get('username'),
+            'password': self.user_info.get('password')
+        }
 
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'users/login.html')
+        tester_login = self.client.login(**exist_user)
+
+        self.assertTrue(tester_login)
+        self.client.logout()
+
+        response = self.client.post(self.login_url,
+                                    exist_user,
+                                    follow=True)
+
+        self.assertTrue(response.context['user'].is_active)
+        self.assertEquals(int(self.client.session['_auth_user_id']),
+                          exist_user.get('id'))
 
     def test_register_GET(self):
         """

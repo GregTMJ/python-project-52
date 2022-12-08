@@ -18,5 +18,11 @@
     "username": "Salgreg",
     "password1": "8u3^2Dxw",
     "password2": "8u3^2Dxw"
+  },
+  "existing": {
+    "username": "MurrayBill",
+    "password": "pfwM+dZWKWRu9qGw",
+    "first_name": "Bill",
+    "last_name": "Murray"
   }
 }

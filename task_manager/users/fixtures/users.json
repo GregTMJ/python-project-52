@@ -3,7 +3,7 @@
     "model": "users.user",
     "pk": 100,
     "fields": {
-      "username": "Bill Murray",
+      "username": "MurrayBill",
       "password": "pfwM+dZWKWRu9qGw",
       "first_name": "Bill",
       "last_name": "Murray"

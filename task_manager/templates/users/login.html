@@ -1,7 +1,7 @@
 {% extends "basic.html" %}
 
 {% load i18n %}
-{% load crispy_forms_tags %}
+{% load bootstrap4 %}
 
 {% block title %}{% trans 'Login' %}{% endblock %}
 
@@ -10,12 +10,7 @@
 <div class="d-flex justify-content-center">
     <form method="POST">
         {% csrf_token %}
-        <div class="form-group">
-            {{ form.username|as_crispy_field }}
-        </div>
-        <div class="form-group">
-            {{ form.password|as_crispy_field }}
-        </div>
+        {% bootstrap_form form %}
         <button type="submit" class="btn btn-primary">{% trans 'Sign in' %}</button>
     </form>
 </div>
