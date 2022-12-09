@@ -117,7 +117,7 @@ class TestAuthRequests(TestCase):
                                     self.users_info.get("tester"))
 
         self.assertEquals(response.status_code, 302)
-        self.assertRedirects(response, self.list_users_url)
+        self.assertRedirects(response, self.login_url)
 
         response = self.client.post(self.register_url,
                                     self.users_info.get("new"))
