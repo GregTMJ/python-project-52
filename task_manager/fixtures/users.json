@@ -10,7 +10,9 @@
   "updated_user": {
     "first_name": "Greg",
     "last_name": "Alexandrov",
-    "username": "Gregztmj"
+    "username": "Gregztmj",
+    "password1": "4uhQPfzz$m**yWs2",
+    "password2": "4uhQPfzz$m**yWs2"
   },
   "tester": {
     "first_name": "Grisha",

@@ -74,7 +74,7 @@ class UserDeleteView(NoPermissionMixin, AuthRequiredMixin,
     model = get_user_model()
     template_name = 'users/delete.html'
     success_message = _("User deleted!")
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('users')
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):
