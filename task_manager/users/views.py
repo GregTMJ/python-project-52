@@ -60,7 +60,7 @@ class UserUpdateView(NoPermissionMixin, AuthRequiredMixin,
     """
     model = get_user_model()
     template_name = 'users/edit.html'
-    fields = ('username', 'first_name', 'last_name',)
+    form_class = NewUserForm
     success_message = _("User's information successfully updated")
     success_url = reverse_lazy('users')
 
