@@ -128,6 +128,7 @@ class TestAuthRequests(TestCase):
         """
         Testing the edit user page GET request
         """
+        self.login()
         response = self.client.get(self.edit_user_url)
 
         self.assertEquals(response.status_code, 200)
@@ -137,6 +138,7 @@ class TestAuthRequests(TestCase):
         """
         Testing the delete user page GET request
         """
+        self.login()
         response = self.client.get(self.delete_user_url)
 
         self.assertEquals(response.status_code, 200)
