@@ -114,7 +114,7 @@ msgstr "Статус успешно удалён"
 
 #: .\status\models.py:7
 msgid "name"
-msgstr "наименование"
+msgstr "имя"
 
 #: .\tasks\models.py:11
 msgid "description"

@@ -164,7 +164,7 @@ class TestAuthRequests(TestCase):
         """
         self.login()
         response = self.client.post(self.delete_user_url)
-        self.assertRedirects(response, self.homepage_url)
+        self.assertRedirects(response, self.list_users_url)
         self.assertEqual(response.status_code, 302)
 
     def test_logout(self):
