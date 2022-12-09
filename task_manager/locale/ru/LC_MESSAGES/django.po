@@ -232,3 +232,14 @@ msgstr "Выполняет"
 
 msgid "Created by"
 msgstr "Создатель"
+
+
+#: task_manager/users/mixins.py:13
+msgid "You do not have permission to modify another user."
+msgstr "У вас нет прав для изменения другого пользователя."
+
+
+#: task_manager/mixins.py:11
+msgid "You are not logged in! Please sign in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+

@@ -6,29 +6,49 @@
 
 {% block main %}
 <main>
-    <ul class="list-group">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">
+                {% trans 'ID' %}
+            </th>
+            <th scope="col">
+                {% trans 'Username' %}
+            </th>
+            <th scope="col">
+                {% trans 'Full name' %}
+            </th>
+            <th scope="col">
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
         {% if people %}
         {% for person in people %}
-
-        <li class="list-group-item">
-
-            <div class="d-flex bd-highlight mb-3">
-                <div class="mr-auto p-2 bd-highlight text-capitalize">{{ person.username }}</div>
-                <div class="mr-auto p-2 bd-highlight text-capitalize">{{ person.first_name }} {{ person.last_name }}</div>
-                {% if user.pk == person.pk %}
+        <tr>
+            <th scope="col">
+                {{ person.id }}
+            </th>
+            <td>
+                {{ person.username }}
+            </td>
+            <td>
+                {{ person.first_name }} {{ person.last_name }}
+            </td>
+            <td>
                 <div class="p-2 bd-highlight">
                     <a class="btn btn-primary" href="{% url 'edit' person.pk %}" role="button">{% trans 'edit' %}</a>
                 </div>
                 <div class="p-2 bd-highlight">
                     <a class="btn btn-danger" href="{% url 'delete' person.pk %}" role="button">{% trans 'delete' %}</a>
                 </div>
-                {% endif %}
-            </div>
-
-        </li>
+            </td>
+        </tr>
 
         {% endfor %}
         {% endif %}
-    </ul>
+        </tbody>
+    </table>
 </main>
 {% endblock %}

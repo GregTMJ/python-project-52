@@ -6,8 +6,11 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
+from task_manager.mixins import AuthRequiredMixin, NoPermissionMixin,\
+    SuccessMessageDeleteMixin
 from task_manager.users.forms import NewUserForm
 from task_manager.users.models import User
+from task_manager.users.mixins import CheckUserMixin
 
 
 class UserListView(ListView):
@@ -49,7 +52,9 @@ class CreateUserView(CreateView, SuccessMessageMixin):
         return super(CreateUserView, self).form_invalid(form)
 
 
-class UserUpdateView(UpdateView, SuccessMessageMixin):
+class UserUpdateView(NoPermissionMixin, AuthRequiredMixin,
+                     CheckUserMixin, SuccessMessageMixin,
+                     UpdateView):
     """
     View to update information about users
     """
@@ -60,7 +65,9 @@ class UserUpdateView(UpdateView, SuccessMessageMixin):
     success_url = reverse_lazy('users')
 
 
-class UserDeleteView(DeleteView, SuccessMessageMixin):
+class UserDeleteView(NoPermissionMixin, AuthRequiredMixin,
+                     CheckUserMixin, SuccessMessageDeleteMixin,
+                     DeleteView):
     """
     View to delete a certain user
     """
