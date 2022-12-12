@@ -14,26 +14,25 @@
         </div>
         <div class="row justify-content-md-center">
 
-                <form method="get">
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            {% bootstrap_field  filter.form.status %}
-                        </div>
-                        <div class="col-sm-10">
-                            {% bootstrap_field  filter.form.executor %}
-                        </div>
-                        <div class="col-sm-10">
-                            {% bootstrap_field  filter.form.label %}
-                        </div>
-                        <div class="col-sm-10">
-                            {% bootstrap_field  filter.form.users_task %}
-                        </div>
+            <form method="get">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        {% bootstrap_field filter.form.status %}
                     </div>
-                    <button type="submit" class="btn btn-primary">{% trans 'Show' %}</button>
-                    <br>
-                    <br>
-                </form>
-
+                    <div class="col-sm-10">
+                        {% bootstrap_field filter.form.executor %}
+                    </div>
+                    <div class="col-sm-10">
+                        {% bootstrap_field filter.form.label %}
+                    </div>
+                    <div class="col-sm-10">
+                        {% bootstrap_field filter.form.users_task %}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">{% trans 'Show' %}</button>
+                <br>
+                <br>
+            </form>
 
 
             <table class="table table-striped">
@@ -44,6 +43,9 @@
                     </th>
                     <th scope="col">
                         {% trans 'Name' %}
+                    </th>
+                    <th scope="col">
+
                     </th>
                 </tr>
                 </thead>
@@ -59,6 +61,16 @@
                             {{ task.name }}
                         </a>
                     </td>
+                    <th scope="row">
+                        <div class="p-2 bd-highlight">
+                            <a class="btn btn-primary" href="{% url 'update_task' task.id %}"
+                               role="button">{% trans 'edit' %}</a>
+                            {% if task.author.id == user.id %}
+                            <a class="btn btn-danger" href="{% url 'delete_task' task.id %}"
+                               role="button">{% trans 'delete' %}</a>
+                            {% endif %}
+                        </div>
+                    </th>
                 </tr>
                 {% endfor %}
                 {% endif %}
