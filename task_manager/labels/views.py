@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, CreateView, \
@@ -67,3 +68,10 @@ class LabelDeleteView(DeleteView,
         messages.success(request=self.request,
                          message=_('Label successfully deleted!'))
         return super(LabelDeleteView, self).form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        if self.get_object().labels.all().exists():
+            messages.error(self.request, _('Unable to delete label because it is in use'))
+            return redirect('labels')
+
+        return super().post(request, *args, **kwargs)
