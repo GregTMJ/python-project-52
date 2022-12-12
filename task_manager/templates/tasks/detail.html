@@ -21,7 +21,7 @@
                     </li>
                     <li class="list-group-item">
                         <p>
-                            <em>{% trans 'Executed by' %}: {{ task.executor.username }}</em>
+                            <em>{% trans 'Executed by' %}: {{ task.executor.first_name }} {{ task.executor.last_name }}</em>
                         </p>
                     </li>
                     <li class="list-group-item">
@@ -36,7 +36,7 @@
                     </li>
                     <li class="list-group-item">
                         {% trans 'Created by' %}:
-                        <p><em>{{ task.author.username }}</em></p>
+                        <p><em>{{ task.author.first_name }} {{ task.author.last_name }}</em></p>
                     </li>
                 </ul>
                 <div class="p-2 bd-highlight">
