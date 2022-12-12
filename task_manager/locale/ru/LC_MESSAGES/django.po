@@ -152,6 +152,10 @@ msgstr "Создать метку"
 msgid "create status"
 msgstr "Создать статус"
 
+#: .\templates\status\main.html:42
+msgid "created_at"
+msgstr "Дата создания"
+
 #: .\templates\tasks\main.html:12
 msgid "create task"
 msgstr "Создать задачу"
