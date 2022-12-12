@@ -139,7 +139,7 @@ class TaskTest(TestCase):
         )
         self.assertEquals(task_label.task, created_task)
         self.assertEquals(task_label.label, created_label)
-        self.assertEquals(created_task.label.all()[0], created_label)
+        self.assertEquals(created_task.labels.all()[0], created_label)
 
     def test_filter_task(self):
         self.client.post(self.create_task,
