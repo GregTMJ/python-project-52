@@ -11,31 +11,50 @@
             <a class="btn btn-primary" href="{% url 'create_label' %}"
                role="button">{% trans 'create label' %}</a>
         </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">
+                    {% trans 'ID' %}
+                </th>
+                <th scope="col">
+                    {% trans 'name' %}
+                </th>
+                <th scope="col">
+                    {% trans 'created_at' %}
+                </th>
+                <th scope="col">
 
-        <ul class="list-group">
+                </th>
+            </tr>
+            </thead>
+            <tbody>
             {% if labels %}
             {% for label in labels %}
-
-            <li class="list-group-item">
-
-                <div class="d-flex bd-highlight mb-3">
-                    <div class="mr-auto p-2 bd-highlight text-capitalize">{{ label.id }}</div>
-                    <div class="mr-auto p-2 bd-highlight text-capitalize">{{ label.name }}</div>
-                    <div class="mr-auto p-2 bd-highlight text-capitalize">{{ label.created_at }}</div>
+            <tr>
+                <th scope="col">
+                    {{ label.id }}
+                </th>
+                <td>
+                    {{ label.name }}
+                </td>
+                <td>
+                    {{ label.created_at }}
+                </td>
+                <td>
                     <div class="p-2 bd-highlight">
                         <a class="btn btn-primary" href="{% url 'update_label' label.id %}"
                            role="button">{% trans 'edit' %}</a>
                         <a class="btn btn-danger" href="{% url 'delete_label' label.id %}"
                            role="button">{% trans 'delete' %}</a>
                     </div>
-                </div>
-
-            </li>
-
+                </td>
+            </tr>
             {% endfor %}
             {% endif %}
-        </ul>
 
+            </tbody>
+        </table>
     </div>
 </main>
 {% endblock %}

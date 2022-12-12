@@ -71,7 +71,8 @@ class LabelDeleteView(DeleteView,
 
     def post(self, request, *args, **kwargs):
         if self.get_object().labels.all().exists():
-            messages.error(self.request, _('Unable to delete label because it is in use'))
+            messages.error(self.request,
+                           _('Unable to delete label because it is in use'))
             return redirect('labels')
 
         return super().post(request, *args, **kwargs)
