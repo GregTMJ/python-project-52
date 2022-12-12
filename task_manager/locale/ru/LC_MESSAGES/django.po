@@ -262,3 +262,11 @@ msgstr "Метка успешно удалена"
 #: task_manager/labels/views.py:50
 msgid "Unable to delete label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
+
+#: task_manager/tasks/filters.py:17
+msgid "Only your tasks"
+msgstr "Только свои задачи"
+
+#: task_manager/tasks/filters.py:24
+msgid "label"
+msgstr "Метка"
