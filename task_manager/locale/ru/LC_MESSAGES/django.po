@@ -134,15 +134,15 @@ msgstr "Статус задачи"
 
 #: .\tasks\views.py:34
 msgid "Task successfully created!"
-msgstr "Задача удачно создана"
+msgstr "Задача успешно создана"
 
 #: .\tasks\views.py:50
 msgid "Task successfully updated!"
-msgstr "Задача удачно изменена"
+msgstr "Задача успешно изменена"
 
 #: .\tasks\views.py:50
 msgid "Task successfully deleted!"
-msgstr "Задача удачно удалена"
+msgstr "Задача успешно удалена"
 
 #: .\templates\labels\main.html:12
 msgid "create label"
