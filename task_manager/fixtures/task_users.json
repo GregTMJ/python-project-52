@@ -1,11 +1,11 @@
 {
   "task_users": {
     "author": {
-      "id": 20,
-      "first_name": "Gregory",
-      "last_name": "Saliba",
-      "username": "GregTMJ",
-      "password": "8u3^2Dxw",
+      "id": 100,
+      "first_name": "Bill",
+      "last_name": "Murray",
+      "username": "MurrayBill",
+      "password": "pfwM+dZWKWRu9qGw",
       "email": "Greg@hotmail.com"
     },
     "executor": {

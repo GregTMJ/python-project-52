@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, UpdateView, \
@@ -63,3 +64,13 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView):
         messages.success(request=self.request,
                          message=self.success_message)
         return super(StatusDeleteView, self).form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        """
+        Before deleting we verify if the status is not used in a task
+        """
+        if self.get_object().status.all().exists():
+            messages.error(self.request,
+                           _('Unable to delete status because it is in use'))
+            return redirect('statuses')
+        return super().post(request, *args, **kwargs)

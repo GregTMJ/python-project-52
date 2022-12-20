@@ -1,0 +1,14 @@
+[
+  {
+    "model": "tasks.task",
+    "pk": 50,
+    "fields": {
+      "name": "Late bug fixing",
+      "description": "We had a bug last time we checked",
+      "author": 100,
+      "executor": 101,
+      "status": 15,
+      "labels": [10]
+    }
+  }
+]

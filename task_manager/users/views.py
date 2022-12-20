@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
@@ -75,6 +76,17 @@ class UserDeleteView(NoPermissionMixin, AuthRequiredMixin,
     template_name = 'users/delete.html'
     success_message = _("User deleted!")
     success_url = reverse_lazy('users')
+
+    def post(self, request, *args, **kwargs):
+        """
+        We verify if the use is not taking a task, or didn't create one
+        """
+        if self.get_object().author.all().exists() or \
+                self.get_object().executor.all().exists():
+            messages.error(self.request,
+                           _('Unable to delete user because it is in use'))
+            return redirect('statuses')
+        return super().post(request, *args, **kwargs)
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):

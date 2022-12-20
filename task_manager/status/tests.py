@@ -21,32 +21,49 @@ class TestStatusRequest(TestCase):
         self.create_status = reverse('status_create')
         self.user_info: dict = get_data('users').get('new')
         self.status_info: dict = get_data('status')
+
         self.create_user = User.objects.create_user(**self.user_info)
         self.create_user.save()
+
         self.client.login(
             username=self.user_info.get("username"),
             password=self.user_info.get("password")
         )
 
     def test_redirect_if_not_logged_in(self):
+        """
+        Testing the redirection in case if our user is not logged in
+        """
         self.client.logout()
+
         response = self.client.get(self.list_statuses)
         self.assertEquals(response.status_code, 302)
         self.assertRedirects(response, '/login/?next=/statuses/')
 
     def test_logged_in_user(self):
+        """
+        Testing the GET if user is logged in
+        """
         response = self.client.get(self.list_statuses)
+
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'status/main.html')
 
     def test_create_status(self):
+        """
+        Testing status creation
+        """
         response = self.client.get(self.create_status)
+
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'status/create.html')
 
         new_status = self.status_info.get("new")
+
         post_response = self.client.post(self.create_status,
-                                         new_status)
+                                         data={
+                                             'name': new_status
+                                         })
         self.assertRedirects(post_response, self.list_statuses)
 
         created_status = Status.objects.get(name=new_status['name'])
@@ -65,7 +82,9 @@ class TestStatusRequest(TestCase):
         post_response = self.client.post(
             reverse('status_update',
                     args=[existing_status.pk]),
-            updated_status)
+            data={
+                'name': updated_status
+            })
         self.assertEquals(post_response.status_code, 302)
 
         status = Status.objects.get(name=updated_status['name'])

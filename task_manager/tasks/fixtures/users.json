@@ -1,0 +1,23 @@
+[
+  {
+    "model": "users.user",
+    "pk": 100,
+    "fields": {
+      "username": "MurrayBill",
+      "password": "pfwM+dZWKWRu9qGw",
+      "first_name": "Bill",
+      "last_name": "Murray"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 101,
+    "fields": {
+      "username": "Farvil",
+      "password": "4uhQPfzz$m**yWs2",
+      "first_name": "Farm",
+      "last_name": "ville"
+    }
+  }
+]
+

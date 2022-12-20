@@ -56,16 +56,13 @@
 
         </div>
     </nav>
-    {% if messages %}
-    {% for message in messages %}
+
     <div class="text-center alert alert-{{ message.tags }}">
-        {{ message|safe }}
+        {% bootstrap_messages %}
     </div>
-    {% endfor %}
-    {% endif %}
+
 </header>
-<br>
-<br>
+
 {% block main %} {% endblock %}
 </body>
 </html>

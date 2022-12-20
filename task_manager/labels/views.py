@@ -70,6 +70,9 @@ class LabelDeleteView(DeleteView,
         return super(LabelDeleteView, self).form_valid(form)
 
     def post(self, request, *args, **kwargs):
+        """
+        Before deleting we check if the label is used in a task
+        """
         if self.get_object().labels.all().exists():
             messages.error(self.request,
                            _('Unable to delete label because it is in use'))

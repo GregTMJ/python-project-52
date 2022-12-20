@@ -19,8 +19,10 @@ class TestLabelCase(TestCase):
         """
         self.label_list = reverse('labels')
         self.create_label = reverse('create_label')
+
         self.labels = get_data('labels')
         self.user = get_data('users').get("new")
+
         self.create_user = User.objects.create_user(**self.user)
         self.create_user.save()
         self.client.login(
@@ -58,17 +60,17 @@ class TestLabelCase(TestCase):
         """
         Testing the GET/POST method for update view
         """
-        new_label = self.labels.get("existing")
-        label = Label.objects.get(name=new_label['name'])
-        response = self.client.get(reverse('update_label',
-                                           args=[label.id]))
+        new_label = self.labels.get("existing")[0]
+        existing_label = Label.objects.get(name=new_label['name'])
 
+        response = self.client.get(reverse('update_label',
+                                           args=[existing_label.id]))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'labels/edit.html')
 
         edit_label = self.labels.get("new")
         post_response = self.client.post(reverse('update_label',
-                                                 args=[label.id]),
+                                                 args=[existing_label.id]),
                                          edit_label)
 
         self.assertEquals(post_response.status_code, 302)
@@ -81,7 +83,7 @@ class TestLabelCase(TestCase):
         """
         Testing the GET/POST method for delete view
         """
-        new_label = self.labels.get("existing")
+        new_label = self.labels.get("existing")[0]
         label = Label.objects.get(name=new_label['name'])
         response = self.client.get(reverse('delete_label',
                                            args=[label.id]))

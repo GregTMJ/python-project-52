@@ -1,8 +1,14 @@
 {
-  "existing": {
-    "name": "Giving new features"
-  },
+  "existing": [
+    {
+      "name": "Giving new features"
+    },
+    {
+      "name": "Fixing major bugs"
+    }
+
+  ],
   "new": {
-    "name": "Working on it"
+    "name": "Trying my best"
   }
 }

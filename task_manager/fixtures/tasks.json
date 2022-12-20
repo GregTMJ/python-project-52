@@ -12,5 +12,16 @@
     "author": "Phtil13",
     "executor": "GregTMJ",
     "status": "Bug fixing"
+  },
+  "existing": {
+    "id": 50,
+    "name": "Late bug fixing",
+    "description": "We had a bug last time we checked",
+    "author": 100,
+    "executor": 101,
+    "status": 15,
+    "labels": [
+      10
+    ]
   }
 }

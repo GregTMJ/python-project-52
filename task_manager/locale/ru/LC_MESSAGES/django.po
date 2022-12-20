@@ -270,3 +270,11 @@ msgstr "Только свои задачи"
 #: task_manager/tasks/filters.py:24
 msgid "label"
 msgstr "Метка"
+
+#: task_manager/status/views.py:71
+msgid "Unable to delete status because it is in use"
+msgstr "Невозможно удалить статус, потому что она используется"
+
+#: task_manager/users/views.py:83
+msgid "Unable to delete user because it is in use"
+msgstr "Невозможно удалить пользователь, потому что она используется"
